@@ -3,48 +3,79 @@ import "./registrpage.css"
 
 class RegistrPage extends Component {
     state = {
-        items:[],
-        inputValue: '',
-        prevState:" "
+        username: '',
+        email: '',
+        password: '',
+       
+
+  }
 
 
+      handleChange = (event) => {
+        const { name, value } = event.target;
+        this.setState({ [name]: value })
       }
+      handleRegister = () => {
+        const { username, email, password } = this.state;
       
-      onInputChange = (event) => {
+      
+        console.log(username, email, password, ' --- data');
         this.setState({
-            inputValue: event.target.value
-         
+          username: '',
+          email: '',
+          password: '',
+        
         })
       }
-      onBtnClick = () => {
-    
-    
-        
-        this.onAdd(this.state.inputValue);
-        this.setState({inputValue: ''})
-
-        console.log(this.state.items)
-      }
-  
-    onAdd=(text)=>{
-        const newItem={
-            text:text
-        }
-    }
-
-    render(){
-      
+     
+      render() {
+        const isClicked=this.props
+        const {username, email, password } = this.state;
         return(
             <div className="registrpage">
-                <h1>RegistrPage</h1>
-               <span> UserName: <input type="text" onChange={this.onInputChange} placeholder="username"/> </span> 
-               <span> Email: <input type="email" onChange={this.onInputChange} placeholder="email"/> </span> 
-               <span> Password: <input type="password" onChange={this.onInputChange} placeholder="password"/> </span> 
-               <button className="registrbutton" onClick={this.onBtnClick}>Registration</button>
+                <h1>Register Page</h1>
+                <div className="register-input">
+                         <label htmlFor="username">UserName:</label>
+                         <input
+                           type="text"
+                           id="username" 
+                           name="username"
+                           onChange={this.handleChange} 
+                           placeholder="username"
+                           value={username}
+                           />
+             </div>
+             <div className="register-input">
+                          <label htmlFor="email">Email:</label>
+                          <input 
+                             type="email"
+                             id="email"
+                             name='email'
+                             value={email}
+                             onChange={this.handleChange}
+                             placeholder="email"
+                             />  
+             </div>
+             <div className="register-input">
+                         <label htmlFor="password">Password:</label> 
+                          <input
+                             type="password"
+                             id="password"
+                             name="password"
+                             value={password}
+                             onChange={this.handleChange}
+                             placeholder="password"
+                              /> 
+             </div>
+               <button className="registrbutton" onClick={this.handleRegister}>Registration</button>
             </div>
+
+
+
         )
     }
     
 
 }
 export default RegistrPage
+
