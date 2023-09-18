@@ -6,31 +6,24 @@ class RegistrPage extends Component {
         username: '',
         email: '',
         password: '',
-       
-
+      
   }
-
-
       handleChange = (event) => {
         const { name, value } = event.target;
         this.setState({ [name]: value })
       }
-      handleRegister = () => {
-        const { username, email, password } = this.state;
-      
-      
-        console.log(username, email, password, ' --- data');
-        this.setState({
-          username: '',
-          email: '',
-          password: '',
-        
-        })
+   
+      imgHandle=(e)=>{
+        const files=e.target.files[0]
+          const  reader=new FileReader()
+          reader.onload=(e)=>{
+              this.files.innerHTML=<img src="g"/>
+          reader.readAsDataURL(files)
+       }
       }
-     
       render() {
-        const isClicked=this.props
-        const {username, email, password } = this.state;
+        const {handleRegister}=this.props
+        const {username, email, password,file} = this.state;
         return(
             <div className="registrpage">
                 <h1>Register Page</h1>
@@ -67,7 +60,22 @@ class RegistrPage extends Component {
                              placeholder="password"
                               /> 
              </div>
-               <button className="registrbutton" onClick={this.handleRegister}>Registration</button>
+             <div className="register-input">
+                         <label htmlFor="file">Image:</label> 
+                          <input
+                             type="file"
+                             id="file"
+                             name="file"
+                              value={file}
+                             onChange={this.imgHandle}
+                             accept="image/*"
+                          
+                              /> 
+             </div>
+               <button className="registrbutton"
+                 onClick={() => handleRegister(username, email, password,file) }
+               >
+                Registration</button>
             </div>
 
 
