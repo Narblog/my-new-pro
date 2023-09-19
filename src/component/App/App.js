@@ -2,37 +2,36 @@ import { Component } from "react";
 import RegistrPage from "../RegistrPage";
 import "./app.css"
 import UserPage from "../UserPage";
+import {setUserData,getUserData,setisClicked,getisClicked} from "../../services/localStoragetest"
 
 class App extends Component {
     state={
-        username:"",
-        password:"",
-        email:"",
-        file:"",
-        isClicked:true
+       userData:{},
+        isClicked:false,
     }
-    handleRegister = (username, email, password,file) => {
+    handleRegistration = (userData) => {
         this.setState({
-            username: username,
-            email: email,
-            password: password,
-            file:file,
-            isClicked: false,
+           userData,
+           isClicked:true
         });
+        setUserData(userData);
+        setisClicked(true)
       };
-
-   
     render(){
      
-       const{username,password,email,file,isClicked}=this.state
-        return(
-
-            <div className="app">
-                {
-                    isClicked ? <RegistrPage  handleRegister={this.handleRegister}/> : <UserPage username={username} password={password} email={email} file={file}/>
-                }
-            </div>
-        )
+       const{userData,isClicked}=this.state
+    return (
+        <div className="app">
+          {getisClicked() ? 
+          
+          <UserPage userData={isClicked ? userData: getUserData()}/>
+          :
+          <RegistrPage
+            handleRegistration={this.handleRegistration}
+          />
+          }
+        </div>
+      );
     }
 
 }

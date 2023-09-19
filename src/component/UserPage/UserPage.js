@@ -1,21 +1,29 @@
 import { Component } from "react";
 import "./userpage.css"
  export  default class UserPage extends Component {
+    state={
+        imageUrl:""
+    }
+ 
    render(){
-    const {username,password,email,file}=this.props
+    const {username,password,email }=this.props.userData
+    //localStorage.setItem("user",JSON.stringify({username,password,email}))
+    //const info=JSON.parse(localStorage.getItem("user"))  
+
+
     return(
+     
         <div className="userpage">
-            <div className="box">
-            <span>UserName</span>-{username}
+            <h1>Welcome,<span>{username}</span>!</h1>
+         <h4>Personal Info:</h4>
+            <div>
+            Email:<span>{email}</span>
             </div>
-            <div className="box">
-            <span>Email</span>-{email}
+            <div >
+            Password:<span>{password}</span>
             </div>
-            <div className="box">
-            <span>Password</span>-{password}
-            </div>
-            <div className="box1">
-            <span>Image</span>-{file}
+            <div >
+            <img src={this.props.fileUrl} alt=""   />
             </div>
               
         </div>
