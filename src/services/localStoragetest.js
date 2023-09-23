@@ -17,3 +17,10 @@ export const getisClicked = () => {
 export const removeLocal=()=>{
         return localStorage.removeItem("userData")
 }
+
+export const getImageUrl = (imageUrl) => {
+    return localStorage.getItem("imageUrl");
+}
+export const setImageUrl = (imageUrl) => {
+    localStorage.setItem("imageUrl", imageUrl)
+}

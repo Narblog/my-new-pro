@@ -1,0 +1,13 @@
+.test {
+    margin: 10px auto;
+    padding: 20px;
+    width: 250px;
+    background-color: #fff;
+  }
+  .test button {
+    width: 40px;
+    text-align: center;
+  }
+  .test input{
+    text-align: center;
+  }

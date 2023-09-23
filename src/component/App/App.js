@@ -3,6 +3,7 @@ import RegistrPage from "../RegistrPage";
 import "./app.css"
 import UserPage from "../UserPage";
 import {setUserData,getUserData,setisClicked,getisClicked} from "../../services/localStoragetest"
+import CountUp from "../CountUp/CountUp";
 
 class App extends Component {
     state={
@@ -21,7 +22,9 @@ class App extends Component {
      
        const{userData,isClicked}=this.state
     return (
-        <div className="app">
+<div className="app">
+      <CountUp /></div>
+       /* <div className="app">
           {getisClicked() ? 
           
           <UserPage userData={isClicked ? userData: getUserData()}/>
@@ -30,7 +33,7 @@ class App extends Component {
             handleRegistration={this.handleRegistration}
           />
           }
-        </div>
+        </div>*/
       );
     }
 

@@ -111,17 +111,7 @@ export default class RergisterPage extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <div className="register-input">
-          <label htmlFor="file">Image:</label>
-          <input 
-            id="upload"
-             ref="upload"
-              type="file"
-               accept="image/*"
-           onChange={this.handleFileChange}/>
-        
-            
-        </div>
+         
           {
             Object.keys(validationErrors).length ? (
               <div className="error-alert">
