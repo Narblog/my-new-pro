@@ -3,6 +3,7 @@ import RegistrPage from "../RegistrPage";
 import "./app.css"
 import UserPage from "../UserPage";
 import LocalStorageService from "../../services/LocalStorageService"
+import DarkThemeToggle from "../DarkThemeToggle/DarkThemeToggle";
 
 
 function App() {
@@ -24,10 +25,10 @@ function App() {
        // <UserPage userData={setisClicked1 ? setUserData1 : getUserData()} />
         isClicked?
         <UserPage userData={userData}/>:
-        <RegistrPage
-          handleRegistration={handleRegistration}
-        />
+        <RegistrPage handleRegistration={handleRegistration}/> 
+        
       }
+      <DarkThemeToggle/>
     </div>
   )
 }
