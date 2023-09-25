@@ -1,6 +1,153 @@
-import { Component } from "react";
+import { useState } from "react";
 import './registrpage.css'
+
+
+function RegistrPage({handleRegistration}){
+   const [username,setUsername]=useState("")
+  const [email,setEmail]=useState("")
+    const [password,setPassword]=useState("")
+   const [validationErrors,setValidationErrors]=useState({})
+   const [name,setName]=useState({})
+
+   const  validateEmail = (email) => {
+      const regExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+      if (regExp.test(email)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+   const validatePassword = (password) => {
+      const regExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+      if (regExp.test(password)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  
+
+    //ՐՐՐՐՐՐՐրրրրրրրրրրրրրր//
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+    
+    }
+     //ՐՐՐՐՐՐՐրրրրրրրրրրրրրր//
+      //ՐՐՐՐՐՐՐրրրրրրրրրրրրրր//
+ 
+
+     //ՐՐՐՐՐՐՐրրրրրրրրրրրրրր//
+    const handleRegister = () => {
+      const validationErrors = {}
+     
+      if (!email.trim() && !validateEmail(email)) {
+        validationErrors.email = 'Please enter a valid email.'
+      }
+      if (!password.trim() && !validatePassword(password)) {
+        validationErrors.password = 'Password must contain letters, numbers and bet at least 6 characters long.'
+      }
+      if (username.trim().length < 3) {
+        validationErrors.username = 'Username is required.'
+      }
+      //////////////////////////////////////
+      if (Object.keys(setValidationErrors).length === 0) {
+        handleRegistration({ username, email, password })
+        return(
+          setUsername(''),
+          setEmail(""),
+          setPassword(""),
+          setValidationErrors({})
+        )
+      
+     
+
+      }else {
+        validationErrors()
+      }
+    }
+    /*  if (Object.keys(validationErrors).length === 0) {
+      this.props.handleRegistration({ username, email, password })
+      this.setState({
+        username: '',
+        email: '',
+        password: '',
+        validationErrors: {}
+  
+      })
+    } else {
+      this.setState({ validationErrors })
+    }*/
+    
+    return (
+      <div className="register-page-wrapper">
+        <h1>Register page</h1>
+        <div className="register-form">
+          <div className="register-input">
+            <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              id="username"
+              value={username}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="register-input">
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              id="email"
+              value={email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="register-input">
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              id="password"
+              value={password}
+              onChange={handleChange}
+            />
+          </div>
+         
+          {
+            Object.keys(validationErrors).length ? (
+              <div className="error-alert">
+                <span>{ validationErrors.email }</span>
+                <span>{ validationErrors.password }</span>
+                <span>{ validationErrors.username }</span>
+              </div>
+            ) : null
+          }
+          <button
+            className="register-btn"
+            onClick={ handleRegister }
+          >
+            Register
+          </button>
+        </div>
+      </div>
+    )
+
+}
+export default RegistrPage
+
+
+
+
+
+
+
+
+/*
 export default class RergisterPage extends Component {
+
   state = {
     username: '',
     email: '',
@@ -66,7 +213,7 @@ export default class RergisterPage extends Component {
      
       reader.readAsDataURL(files)
     }
-  }*/
+  }
  handleFileChange = (event) => {
     const fileObj = event.target.files[0];
     console.log(fileObj.name);
