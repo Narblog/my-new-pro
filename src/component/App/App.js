@@ -1,8 +1,9 @@
 import Header from "./Header/Header"
+import Section from "./Section"
 function App() {
   return (
     <div>
-      <Header/>
+      <Section/>
     </div>
   )
 
