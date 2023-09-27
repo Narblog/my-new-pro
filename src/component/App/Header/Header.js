@@ -31,11 +31,12 @@ function Header (){
               className=" mr-sm-2"
             />
           </Col>
-          <Col xs="auto">
-            <Button type="submit">Search</Button>
-          </Col>
+         
         </Row>
       </Form>
+      <Col xs="auto">
+            <Button type="submit">Search</Button>
+          </Col>
       <Button variant="info">Login</Button>
       <Button variant="success">Sign Up</Button>
         </Container>
