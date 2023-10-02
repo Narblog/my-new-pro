@@ -1,7 +1,4 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import Table from 'react-bootstrap/Table';
-import {Check } from 'react-bootstrap-icons';
+import {Button,Card,Table,Check} from 'react-bootstrap'; 
 function Section (){
 return(
     <div className="container">
