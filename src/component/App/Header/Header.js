@@ -1,17 +1,12 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
+import {Col,Row,Button,Form,Navbar,Nav,Container} from "react-bootstrap"
+import logo from "./logo.png"
 function Header (){
     return(
         <Navbar expand="lg" className="bg-body-dark" bg="dark" variant="dark">
         <Container>
         
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand href="#home" className='ms-2'><img src={logo} alt="news" style={{width:"40px"}}/></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
